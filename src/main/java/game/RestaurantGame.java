@@ -56,32 +56,31 @@ public class RestaurantGame extends GameApplication {
 
     private void createBackground() {
         FXGL.entityBuilder()
-                .at(0, 0)
-                .view(new Rectangle(WINDOW_WIDTH, WINDOW_HEIGHT, Color.LIGHTGRAY))
-                .buildAndAttach();
+            .at(0, 0)
+            .view("background.png")
+            .buildAndAttach();
     }
-
+    
     private void createKitchenAndWaitingArea() {
         // Área de cocina
         FXGL.entityBuilder()
-                .at(WINDOW_WIDTH - 200, 50)
-                .view(new Rectangle(150, 200, Color.LIGHTYELLOW))
+                .at(WINDOW_WIDTH - 180, 250)
+                .view(new Rectangle(150, 200, Color.rgb(255, 255, 224, 0.5)))
                 .buildAndAttach();
 
         // Área de espera
         FXGL.entityBuilder()
-                .at(50, 50)
-                .view(new Rectangle(150, 200, Color.LIGHTBLUE))
+                .at(50, 150)
+                .view(new Rectangle(150, 200, Color.rgb(173, 216, 230, 0.5)))
                 .buildAndAttach();
     }
 
     private void createTables() {
         GameFactory gameFactory = new GameFactory();
-        int startX = 250;
-        int startY = 150;
-        int spacing = 120;
-
-        for (int i = 0; i < RESTAURANT_CAPACITY; i++) {
+        int startX = 262;      // Posición horizontal (izquierda/derecha)
+        int startY = 279;      // Posición vertical (arriba/abajo) - Aumentado de 150 a 400
+        int spacing = 120;     // Espacio entre mesas
+         for (int i = 0; i < RESTAURANT_CAPACITY; i++) {
             int row = i / 5;
             int col = i % 5;
             Entity table = gameFactory.createTable(
